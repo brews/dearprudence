@@ -3,7 +3,7 @@ from functools import cache
 from dearprudence.errors import Cmip6CatalogNoEntriesError, Cmip6CatalogMultipleEntriesError
 
 
-__all__ = ["in_cmip6_catalog", "esm_datastore"]
+__all__ = ["check_cmip6_catalog", "esm_datastore"]
 
 
 @cache
@@ -25,7 +25,7 @@ def esm_datastore(json_url="https://storage.googleapis.com/cmip6/pangeo-cmip6-no
     return intake.open_esm_datastore(json_url)
 
 
-def in_cmip6_catalog(x, datastore=None):
+def check_cmip6_catalog(x, datastore=None):
     """Check that Cmip6Record has an entry in CMIP6-In-The-Cloud catalog
 
     This requires the ``intake-esm`` package to be installed.
@@ -35,8 +35,7 @@ def in_cmip6_catalog(x, datastore=None):
     x : dearprudence.Cmip6Record
     datastore : intake_esm.core.esm_datastore or None, optional
         ESM datastore to search. If `None`, then read non-Quality Controled
-        catalog for CMIP6. Recommend passing in an existing Datastore so
-        we don't beat Public internet services to a pulp.
+        catalog for CMIP6. So we don't beat Public internet services to a pulp.
 
     Returns
     -------
