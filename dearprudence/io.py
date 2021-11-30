@@ -1,7 +1,7 @@
 import dataclasses
 import json
 
-from dearprudence import Cmip6Record, SimpleRun, DtrRun
+from dearprudence.core import Cmip6Record, SimpleRun, DtrRun
 
 
 __all__ = ["read_simpleruns", "read_dtr", "read_tasmax", "read_tasmin", "read_pr"]

@@ -1,6 +1,12 @@
+from functools import cache
+
+from dearprudence.errors import Cmip6CatalogNoEntriesError, Cmip6CatalogMultipleEntriesError
+
+
 __all__ = ["in_cmip6_catalog", "esm_datastore"]
 
 
+@cache
 def esm_datastore(json_url="https://storage.googleapis.com/cmip6/pangeo-cmip6-noQC.json"):
     """
     Sugar to create an intake_esm.core.esm_datastore to pass into `in_cmip6_catalog`
@@ -36,6 +42,11 @@ def in_cmip6_catalog(x, datastore=None):
     -------
     bool
 
+    Raises
+    ------
+    Cmip6CatalogNoEntriesError
+    Cmip6CatalogMultipleEntriesError
+
     See Also
     --------
     dearprudence.esm_datastore
@@ -53,9 +64,15 @@ def in_cmip6_catalog(x, datastore=None):
         grid_label=x.grid_label,
         version=int(x.version),
     )
-    # d = cat.to_dataset_dict(progressbar=False)
-    # k = list(d.keys())
-    if len(cat) != 1:
-        # raise ValueError("catalog does not have one entry, reconsider input IDs so only one entry")
-        return False
+
+    n = len(cat)
+    if n > 1:
+        raise Cmip6CatalogMultipleEntriesError(
+            f"Found {n} entries for {x}, expected 1"
+        )
+    elif n < 1:
+        raise Cmip6CatalogNoEntriesError(
+            f"Found no entries for {x}, expected 1"
+        )
+
     return True
