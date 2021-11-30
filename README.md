@@ -1,7 +1,7 @@
 # dearprudence
 Internal Python library filled with sugar for swallowing downscalingCMIP6 parameter files.
 
-This package is a small working prototype under active development. It may break things or radically change without warning.
+*This is a working prototype under active development. It may break things or radically change without warning.*
 
 ## Examples
 
@@ -26,7 +26,7 @@ tasmax_spec[0].variable_id = "foobar"
 dearprudence.write_params("pointlessly_modified.yaml", tasmax_spec)
 
 if dearprudence.check_cmip6_catalog(tasmax_spec[0].ssp):
-    print("Data exists in CMIP6 In The Cloud catalog!")
+    print("Exists in CMIP6 In The Cloud!")
 ```
 
 ## Installation
