@@ -1,10 +1,10 @@
-import dataclasses
+from dataclasses import dataclass
 
 
 __all__ = ["Cmip6Record", "SimpleRun", "DtrRun"]
 
 
-@dataclasses.dataclass
+@dataclass
 class Cmip6Record:
     activity_id: str
     experiment_id: str
@@ -17,7 +17,7 @@ class Cmip6Record:
     version: str
 
 
-@dataclasses.dataclass
+@dataclass
 class SimpleRun:
     target: str
     variable_id: str
@@ -25,7 +25,7 @@ class SimpleRun:
     ssp: Cmip6Record
 
 
-@dataclasses.dataclass
+@dataclass
 class DtrRun:
     target: str
     variable_id: str

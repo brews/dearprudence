@@ -5,7 +5,7 @@ def esm_datastore(json_url="https://storage.googleapis.com/cmip6/pangeo-cmip6-no
     """
     Sugar to create an intake_esm.core.esm_datastore to pass into `in_cmip6_catalog`
 
-    This is so we don't pummle public internet resources.
+    This is so we don't pummel public internet resources.
 
     Inputs
     ------
