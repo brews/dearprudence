@@ -9,7 +9,6 @@ This package is a small working prototype under active development. It may break
 import dearprudence
 
 
-# Gets list of run parameters.
 tasmax_spec = dearprudence.read_params("GFDL-ESM4-tasmax.yaml")
 
 print(tasmax_spec[0].ssp)
@@ -24,13 +23,10 @@ print(tasmax_spec[0].ssp)
 #             version='20180701')
 
 tasmax_spec[0].variable_id = "foobar"
-dearprudence.write_params("modified.yaml", tasmax_spec)
+dearprudence.write_params("pointlessly_modified.yaml", tasmax_spec)
 
-# Verify Cmip6Record exists in CMIP6-In-The-Cloud.
 if dearprudence.check_cmip6_catalog(tasmax_spec[0].ssp):
-    print("Data exists in catalog")
-# Raises exceptions if multiple, or no catalog entries exists.
-# (Requires `intake_gsm` to be installed.)
+    print("Data exists in CMIP6 In The Cloud catalog!")
 ```
 
 ## Installation
