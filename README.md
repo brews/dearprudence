@@ -18,14 +18,14 @@ print(tasmax_spec[0].ssp)
 #             variable_id='tasmax', 
 #             source_id='GFDL-ESM4', 
 #             institution_id='NOAA-GFDL', 
-#             member_id='r1i1p1f1', 
-#             grid_label='gr1', 
+#             member_id='r1i1p1f1',
+#             grid_label='gr1',
 #             version='20180701')
 
 tasmax_spec[0].variable_id = "foobar"
 dearprudence.write_params("pointlessly_modified.yaml", tasmax_spec)
 
-if dearprudence.check_cmip6_catalog(tasmax_spec[0].ssp):
+if dearprudence.cmip6_catalog_has(tasmax_spec[0].ssp):
     print("Exists in CMIP6 In The Cloud!")
 ```
 
