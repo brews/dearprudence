@@ -3,9 +3,6 @@ Custom Exceptions
 """
 
 
-__all__ = ["Cmip6CatalogError", "Cmip6CatalogMultipleEntriesError", "Cmip6CatalogNoEntriesError"]
-
-
 class Cmip6CatalogError(Exception):
     """Raised when there has been an error with CMIP6 catalog entries"""
     pass
