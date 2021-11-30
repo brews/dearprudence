@@ -44,7 +44,6 @@ def read_params(urlpath):
     return out
 
 
-
 class _DataclassJSONEncoder(json.JSONEncoder):
     """Encoder to dump dataclasses to JSON
     """

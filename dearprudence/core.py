@@ -31,4 +31,3 @@ class DtrRun:
     variable_id: str
     tasmin: SimpleRun
     tasmax: SimpleRun
-
