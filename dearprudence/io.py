@@ -58,4 +58,4 @@ def write_params(urlpath, runlist, mode="w"):
     runlist = list(runlist)
     with open(urlpath, mode=mode) as fl:
         fl.write("jobs: |\n")
-        fl.write("  " + json.dumps(runlist, cls=_DataclassJSONEncoder) + "\n")
+        fl.write("  " + json.dumps(runlist, cls=_DataclassJSONEncoder, separators=(",", ":")) + "\n")
