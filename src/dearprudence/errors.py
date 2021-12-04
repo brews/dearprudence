@@ -16,3 +16,13 @@ class Cmip6CatalogMultipleEntriesError(Cmip6CatalogError):
 class Cmip6CatalogNoEntriesError(Cmip6CatalogError):
     """Raised when Cmip6Record has no matching CMIP6 catalog entries"""
     pass
+
+
+class ParameterFileValidationError(Exception):
+    """Raised when run parameters do not validate"""
+    pass
+
+
+class ParameterFileValidationWarning(UserWarning):
+    """Warning used when run parameters do not validate"""
+    pass
