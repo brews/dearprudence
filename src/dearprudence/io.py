@@ -57,10 +57,14 @@ def write_params(urlpath, runlist, mode="w", pretty=True):
     """Write runs parameters to parameter file"""
     runlist = list(runlist)
 
-    separators = (",", ":")
     if pretty:
-        separators = None
+        # Whitespace, indenting, with additional 2 space indents because this
+        # is a nested JSON string embedded in yaml.
+        json_payload = json.dumps(runlist, cls=_DataclassJSONEncoder, indent=2).replace('\n', '\n  ')
+    else:
+        # Remove pretty whitespace around key-value separators, etc.
+        json_payload = json.dumps(runlist, cls=_DataclassJSONEncoder, separators=(",", ":"))
 
     with open(urlpath, mode=mode) as fl:
         fl.write("jobs: |\n")
-        fl.write("  " + json.dumps(runlist, cls=_DataclassJSONEncoder, separators=separators) + "\n")
+        fl.write("  " + json_payload + "\n")
