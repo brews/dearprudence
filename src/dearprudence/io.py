@@ -53,9 +53,14 @@ class _DataclassJSONEncoder(json.JSONEncoder):
         return super().default(o)
 
 
-def write_params(urlpath, runlist, mode="w"):
+def write_params(urlpath, runlist, mode="w", pretty=True):
     """Write runs parameters to parameter file"""
     runlist = list(runlist)
+
+    separators = (",", ":")
+    if pretty:
+        separators = None
+
     with open(urlpath, mode=mode) as fl:
         fl.write("jobs: |\n")
-        fl.write("  " + json.dumps(runlist, cls=_DataclassJSONEncoder, separators=(",", ":")) + "\n")
+        fl.write("  " + json.dumps(runlist, cls=_DataclassJSONEncoder, separators=separators) + "\n")
