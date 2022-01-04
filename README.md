@@ -33,7 +33,7 @@ if dearprudence.cmip6_catalog_has(tasmax_spec[0].ssp):
 
 Install from the bleeding edge with `pip`:
 ```shell
-pip install pip install git+https://github.com/brews/dearprudence
+pip install git+https://github.com/brews/dearprudence
 ```
 
 `dearprudence` requires Python > 3.7. No external packages are required. `intake_gsm` may need to be installed for `dearprudence.check_cmip6_catalog()`.
