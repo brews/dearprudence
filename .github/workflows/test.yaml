@@ -24,8 +24,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
           cache: 'pip'
+          cache-dependency-path: 'requirements-dev.txt'
       - name: Install dependencies
-        run: pip install .[dev]
+        run: pip install -r requirements_dev.txt
+      - name: Install package
+        run: pip install .
       - name: Format check with black
         run: |
           black --check .
