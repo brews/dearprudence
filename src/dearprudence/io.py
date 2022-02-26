@@ -8,10 +8,18 @@ __all__ = ["read_params", "write_params"]
 
 
 def _load_paramfile(urlpath):
-    with open(urlpath) as fl:
+    # First readline() to pop-off and discard the first yaml bit of
+    # the file, then load as JSON str. Keeps us from depending
+    # on pyyaml.
+    if isinstance(urlpath, str):
+        with open(urlpath, "r") as fl:
+            # Pop off and discard the first "yaml" bit.
+            _ = fl.readline()
+            return json.load(fl)
+    else:
         # Pop off and discard the first "yaml" bit.
-        _ = fl.readline()
-        return json.load(fl)
+        _ = urlpath.readline()
+        return json.load(urlpath)
 
 
 def _unpack_simplerun(p):
