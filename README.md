@@ -1,3 +1,5 @@
+[![Test](https://github.com/brews/dearprudence/actions/workflows/test.yaml/badge.svg)](https://github.com/brews/dearprudence/actions/workflows/test.yaml)
+
 # dearprudence
 Internal Python library filled with sugar for swallowing downscalingCMIP6 parameter files.
 
