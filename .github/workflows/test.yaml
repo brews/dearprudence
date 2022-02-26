@@ -34,6 +34,9 @@ jobs:
       - name: Format check with black
         run: |
           black --check .
+      - name: Format check with flake8
+        run: |
+          flake8
       - name: Test with pytest
         run: |
           pytest -v --cov=./src/dearprudence --cov-report term-missing
