@@ -43,7 +43,6 @@ Source code is available online at https://github.com/brews/dearprudence/. This 
 
 ## Development
 
-Please file bugs in the [bug
-tracker](https://github.com/brews/dearprudence/issues).
+Please file bugs in the [bug tracker](https://github.com/brews/dearprudence/issues).
 
-Want to contribute? Great! We’re following please follow [pep8](https://www.python.org/dev/peps/pep-0008/) and write unit tests. Fork away.
+Want to contribute? Great! Fork the main branch and file a pull request when you're ready. Please be sure to write unit tests and follow [pep8](https://www.python.org/dev/peps/pep-0008/). Fork away!
