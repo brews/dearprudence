@@ -33,12 +33,17 @@ if dearprudence.cmip6_catalog_has(tasmax_spec[0].ssp):
 
 ## Installation
 
-Install from the bleeding edge with `pip`:
+Install with `pip` using:
 ```shell
-pip install git+https://github.com/brews/dearprudence
+pip install dearprudence
 ```
 
 `dearprudence` requires Python > 3.9. No external packages are required. The `intake_esm` package may need to be installed to use `dearprudence.check_cmip6_catalog()`.
+
+Install the unreleased bleeding-edge version of the package with:
+```shell
+pip install git+https://github.com/brews/dearprudence
+```
 
 ## Support
 Source code is available online at https://github.com/brews/dearprudence/. This software is Open Source and available under the Apache License, Version 2.0.
