@@ -27,7 +27,7 @@ def _unpack_simplerun(p):
         target=p["target"],
         variable_id=p["variable_id"],
         historical=Cmip6Record(**p["historical"]),
-        ssp=Cmip6Record(**p["ssp"])
+        ssp=Cmip6Record(**p["ssp"]),
     )
 
 
@@ -43,7 +43,7 @@ def read_params(urlpath):
                     target=entry["target"],
                     variable_id=entry["variable_id"],
                     tasmin=_unpack_simplerun(entry["tasmin"]),
-                    tasmax=_unpack_simplerun(entry["tasmax"])
+                    tasmax=_unpack_simplerun(entry["tasmax"]),
                 )
             )
         else:
@@ -53,8 +53,8 @@ def read_params(urlpath):
 
 
 class _DataclassJSONEncoder(json.JSONEncoder):
-    """Encoder to dump dataclasses to JSON
-    """
+    """Encoder to dump dataclasses to JSON"""
+
     def default(self, o):
         if dataclasses.is_dataclass(o):
             return dataclasses.asdict(o)
@@ -68,10 +68,14 @@ def write_params(urlpath, runlist, mode="w", pretty=True):
     if pretty:
         # Whitespace, indenting, with additional 2 space indents because this
         # is a nested JSON string embedded in yaml.
-        json_payload = json.dumps(runlist, cls=_DataclassJSONEncoder, indent=2).replace('\n', '\n  ')
+        json_payload = json.dumps(runlist, cls=_DataclassJSONEncoder, indent=2).replace(
+            "\n", "\n  "
+        )
     else:
         # Remove pretty whitespace around key-value separators, etc.
-        json_payload = json.dumps(runlist, cls=_DataclassJSONEncoder, separators=(",", ":"))
+        json_payload = json.dumps(
+            runlist, cls=_DataclassJSONEncoder, separators=(",", ":")
+        )
 
     with open(urlpath, mode=mode) as fl:
         fl.write("jobs: |\n")

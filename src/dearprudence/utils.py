@@ -1,13 +1,18 @@
 from functools import cache
 
-from dearprudence.errors import Cmip6CatalogNoEntriesError, Cmip6CatalogMultipleEntriesError
+from dearprudence.errors import (
+    Cmip6CatalogNoEntriesError,
+    Cmip6CatalogMultipleEntriesError,
+)
 
 
 __all__ = ["cmip6_catalog_has", "esm_datastore"]
 
 
 @cache
-def esm_datastore(json_url="https://storage.googleapis.com/cmip6/pangeo-cmip6-noQC.json"):
+def esm_datastore(
+    json_url="https://storage.googleapis.com/cmip6/pangeo-cmip6-noQC.json",
+):
     """
     Sugar to create an intake_esm.core.esm_datastore to pass into `in_cmip6_catalog`
 
@@ -22,6 +27,7 @@ def esm_datastore(json_url="https://storage.googleapis.com/cmip6/pangeo-cmip6-no
     intake_esm.core.esm_datastore
     """
     import intake
+
     return intake.open_esm_datastore(json_url)
 
 
@@ -66,13 +72,9 @@ def cmip6_catalog_has(x, datastore=None):
 
     n = len(cat)
     if n > 1:
-        raise Cmip6CatalogMultipleEntriesError(
-            f"Found {n} entries for {x}, expected 1"
-        )
+        raise Cmip6CatalogMultipleEntriesError(f"Found {n} entries for {x}, expected 1")
     elif n < 1:
-        raise Cmip6CatalogNoEntriesError(
-            f"Found no entries for {x}, expected 1"
-        )
+        raise Cmip6CatalogNoEntriesError(f"Found no entries for {x}, expected 1")
 
     return True
 

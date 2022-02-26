@@ -14,12 +14,14 @@ def _validate_matching_key_attrs(a, b, error_attrs=None, warn_attrs=None):
 
     for attr in error_attrs:
         if getattr(a, attr) != getattr(b, attr):
-            raise ParameterFileValidationError(f"{attr} does not match between {a} and {b}")
-    
+            raise ParameterFileValidationError(
+                f"{attr} does not match between {a} and {b}"
+            )
+
     for attr in warn_attrs:
         if getattr(a, attr) != getattr(b, attr):
             # warnings.warn(f"{attr} does not match between {a} and {b}", ParameterFileValidationWarning)
-            logging.warn(f"{attr} does not match between {a} and {b}")
+            logging.warning(f"{attr} does not match between {a} and {b}")
 
     return True
 
@@ -28,13 +30,19 @@ def _validate_simplerun_variable_id(a, goal_variable_id):
     """Raise error if variable_id does not match across root, ssp, historical"""
 
     if a.variable_id != goal_variable_id:
-        raise ParameterFileValidationError(f".variable_id does not equal {goal_variable_id} in {a}")
+        raise ParameterFileValidationError(
+            f".variable_id does not equal {goal_variable_id} in {a}"
+        )
 
     if a.ssp.variable_id != goal_variable_id:
-        raise ParameterFileValidationError(f".ssp.variable_id does not equal {goal_variable_id} in {a}")
+        raise ParameterFileValidationError(
+            f".ssp.variable_id does not equal {goal_variable_id} in {a}"
+        )
 
     if a.historical.variable_id != goal_variable_id:
-        raise ParameterFileValidationError(f".historical.variable_id does not equal {goal_variable_id} in {a}")
+        raise ParameterFileValidationError(
+            f".historical.variable_id does not equal {goal_variable_id} in {a}"
+        )
 
     return True
 
@@ -49,11 +57,15 @@ def validate_simplerun(r, variable_id=None):
 def _validate_dtr_targets(r):
     """Raise error if dtr, tasmin, tasmax do not share the same 'target'"""
     if r.target != r.tasmin.target:
-        raise ParameterFileValidationError(f".target does not equal .tasmin.target in {r}")
+        raise ParameterFileValidationError(
+            f".target does not equal .tasmin.target in {r}"
+        )
 
     if r.target != r.tasmax.target:
-        raise ParameterFileValidationError(f".target does not equal .tasmax.target in {r}")
-    
+        raise ParameterFileValidationError(
+            f".target does not equal .tasmax.target in {r}"
+        )
+
     return True
 
 
@@ -61,7 +73,7 @@ def validate_dtrrun(r):
     """Basic sanity-check validation of a DtrRun"""
     if r.variable_id != "dtr":
         raise ParameterFileValidationError(f".variable_id does not equal 'dtr' in {r}")
-    
+
     _validate_dtr_targets(r)
 
     validate_simplerun(r.tasmin, variable_id="tasmin")
