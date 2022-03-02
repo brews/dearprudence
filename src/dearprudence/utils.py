@@ -77,21 +77,3 @@ def cmip6_catalog_has(x, datastore=None):
         raise Cmip6CatalogNoEntriesError(f"Found no entries for {x}, expected 1")
 
     return True
-
-
-def check_simplerun_data_exists(r):
-    """
-    Check that input data for SimpleRun exists in CMIP6 catalog
-    """
-    cmip6_catalog_has(r.ssp)
-    cmip6_catalog_has(r.historical)
-    return True
-
-
-def check_dtr_data_exists(r):
-    """
-    Check that input data for DTR exists in CMIP6 catalog
-    """
-    check_simplerun_data_exists(r.tasmin)
-    check_simplerun_data_exists(r.tasmax)
-    return True
