@@ -1,13 +1,35 @@
 import dataclasses
 import json
+from os import PathLike
+from typing import Union, TextIO, BinaryIO, Any, TypedDict, Sequence
 
-from dearprudence.core import Cmip6Record, DtrRun, SimpleRun
+from dearprudence.core import Cmip6Record, SimpleRun
 
 
 __all__ = ["read_params", "write_params"]
 
 
-def _load_paramfile(urlpath):
+# TypedDict mappings representing intermediate dicts loaded from JSON.
+class Cmip6RecordMapping(TypedDict):
+    activity_id: str
+    experiment_id: str
+    table_id: str
+    variable_id: str
+    source_id: str
+    institution_id: str
+    member_id: str
+    grid_label: str
+    version: str
+
+
+class SimpleRunMapping(TypedDict):
+    variable_id: str
+    target: str
+    historical: Cmip6RecordMapping
+    ssp: Cmip6RecordMapping
+
+
+def _load_paramfile(urlpath: Union[str, Union[TextIO, BinaryIO]]) -> Sequence[SimpleRunMapping]:
     # First readline() to pop-off and discard the first yaml bit of
     # the file, then load as JSON str. Keeps us from depending
     # on pyyaml.
@@ -22,7 +44,7 @@ def _load_paramfile(urlpath):
         return json.load(urlpath)
 
 
-def _unpack_simplerun(p):
+def _unpack_simplerun(p: SimpleRunMapping) -> SimpleRun:
     return SimpleRun(
         target=p["target"],
         variable_id=p["variable_id"],
@@ -31,37 +53,26 @@ def _unpack_simplerun(p):
     )
 
 
-def read_params(urlpath):
+def read_params(urlpath: Union[str, Union[TextIO, BinaryIO]]) -> list[SimpleRun]:
     """Read run parameters form yaml file"""
-    payload = _load_paramfile(urlpath)
-
-    out = []
-    for entry in payload:
-        if entry["variable_id"].lower() == "dtr":
-            out.append(
-                DtrRun(
-                    target=entry["target"],
-                    variable_id=entry["variable_id"],
-                    tasmin=_unpack_simplerun(entry["tasmin"]),
-                    tasmax=_unpack_simplerun(entry["tasmax"]),
-                )
-            )
-        else:
-            out.append(_unpack_simplerun(entry))
-
-    return out
+    return [_unpack_simplerun(x) for x in _load_paramfile(urlpath)]
 
 
 class _DataclassJSONEncoder(json.JSONEncoder):
     """Encoder to dump dataclasses to JSON"""
 
-    def default(self, o):
+    def default(self, o: Any) -> Any:
         if dataclasses.is_dataclass(o):
             return dataclasses.asdict(o)
         return super().default(o)
 
 
-def write_params(urlpath, runlist, mode="w", pretty=True):
+def write_params(
+    urlpath: Union[Union[str, bytes, PathLike[str], PathLike[bytes]], int],
+    runlist: Sequence[SimpleRun],
+    mode: str = "w",
+    pretty: bool = True,
+) -> None:
     """Write runs parameters to parameter file"""
     runlist = list(runlist)
 

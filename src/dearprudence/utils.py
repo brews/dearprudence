@@ -1,5 +1,6 @@
 from functools import cache
 
+from dearprudence.core import Cmip6Record
 from dearprudence.errors import (
     Cmip6CatalogNoEntriesError,
     Cmip6CatalogMultipleEntriesError,
@@ -11,7 +12,7 @@ __all__ = ["cmip6_catalog_has", "esm_datastore"]
 
 @cache
 def esm_datastore(
-    json_url="https://storage.googleapis.com/cmip6/pangeo-cmip6-noQC.json",
+    json_url: str = "https://storage.googleapis.com/cmip6/pangeo-cmip6-noQC.json",
 ):
     """
     Sugar to create an intake_esm.core.esm_datastore to pass into `in_cmip6_catalog`
@@ -31,7 +32,7 @@ def esm_datastore(
     return intake.open_esm_datastore(json_url)
 
 
-def cmip6_catalog_has(x, datastore=None):
+def cmip6_catalog_has(x: Cmip6Record, datastore=None) -> bool:
     """Check that Cmip6Record has an entry in CMIP6-In-The-Cloud catalog
 
     This requires the ``intake-esm`` package to be installed.
