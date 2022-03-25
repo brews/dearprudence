@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-__all__ = ["Cmip6Record", "SimpleRun", "DtrRun"]
+__all__ = ["Cmip6Record", "SimpleRun"]
 
 
 @dataclass
@@ -23,11 +23,3 @@ class SimpleRun:
     variable_id: str
     historical: Cmip6Record
     ssp: Cmip6Record
-
-
-@dataclass
-class DtrRun:
-    target: str
-    variable_id: str
-    tasmin: SimpleRun
-    tasmax: SimpleRun
