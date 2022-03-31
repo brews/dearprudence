@@ -11,10 +11,6 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        python-version: ["3.9", "3.x"]
     defaults:
       run:
         shell: bash
@@ -23,7 +19,7 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.x"
           architecture: x64
           cache: 'pip'
           cache-dependency-path: 'requirements-dev.txt'
