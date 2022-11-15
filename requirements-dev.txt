@@ -2,7 +2,7 @@ black==22.10.0
 build==0.9.0
 flake8==5.0.4
 intake_esm==2022.9.18
-mypy==0.990
+mypy==0.991
 pytest==7.2.0
 pytest-cov==4.0.0
 twine==4.0.1
