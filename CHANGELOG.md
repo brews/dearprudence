@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Test coverage badge to README.
 - Daily testing in CI.
 ### Changed
+- Remove text warning about this software being an early prototype.
 - Fix bad comments in flake8 config section causing flake8 6.0.0  runs to error.
 
 ## [0.2.0] - 2022-03-25

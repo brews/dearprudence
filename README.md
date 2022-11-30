@@ -4,8 +4,6 @@
 # dearprudence
 Internal Python library filled with sugar for swallowing downscalingCMIP6 parameter files.
 
-*This is a working prototype under active development. It may break things or radically change without warning.*
-
 ## Examples
 
 ```python
