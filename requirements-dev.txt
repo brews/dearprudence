@@ -1,5 +1,5 @@
 black==23.1.0
-build==0.9.0
+build==0.10.0
 flake8==6.0.0
 intake_esm==2022.9.18
 mypy==0.991
