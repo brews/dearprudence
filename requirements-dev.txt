@@ -3,6 +3,6 @@ build==0.10.0
 flake8==6.0.0
 intake_esm==2022.9.18
 mypy==1.2.0
-pytest==7.2.2
+pytest==7.3.0
 pytest-cov==4.0.0
 twine==4.0.2
