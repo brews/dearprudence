@@ -25,6 +25,21 @@ classifiers = [
 "Homepage" = "https://github.com/brews/dearprudence"
 "Bug Tracker" = "https://github.com/brews/dearprudence/issues"
 
+[project.optional-dependencies]
+catalog = [
+    "intake_esm",
+]
+dev = [
+    "black",
+    "build",
+    "flake8",
+    "intake_esm",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "twine",
+]
+
 [tool.hatch.version]
 source = "vcs"
 fallback-version = "999"
