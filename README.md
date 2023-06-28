@@ -37,7 +37,7 @@ Install with `pip` using:
 pip install dearprudence
 ```
 
-`dearprudence` requires Python > 3.9. No external packages are required. The `intake_esm` package may need to be installed to use `dearprudence.check_cmip6_catalog()`.
+`dearprudence` requires Python > 3.9. No external packages are required. The `intake_esm` package needs to be installed to use `dearprudence.check_cmip6_catalog()`.
 
 Install the unreleased bleeding-edge version of the package with:
 ```shell
