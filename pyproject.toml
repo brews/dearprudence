@@ -32,7 +32,7 @@ catalog = [
 dev = [
     "black",
     "build",
-    "flake8",
+    "ruff",
     "intake_esm",
     "mypy",
     "pytest",
@@ -54,3 +54,23 @@ warn_unused_configs = true
 [[tool.mypy.overrides]]
 module = "intake"
 ignore_missing_imports = true
+
+[tool.ruff]
+exclude = [
+    ".eggs",
+]
+# E402: module level import not at top of file
+# E501: line too long - let black worry about that
+ignore = [
+    "E402",
+    "E501",
+]
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # Pyupgrade
+    "UP",
+]

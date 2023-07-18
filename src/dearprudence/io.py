@@ -1,7 +1,8 @@
 import dataclasses
 import json
 from os import PathLike
-from typing import Union, TextIO, BinaryIO, Any, TypedDict, Sequence
+from typing import Union, TextIO, BinaryIO, Any, TypedDict
+from collections.abc import Sequence
 
 from dearprudence.core import Cmip6Record, SimpleRun
 
@@ -36,7 +37,7 @@ def _load_paramfile(
     # the file, then load as JSON str. Keeps us from depending
     # on pyyaml.
     if isinstance(urlpath, str):
-        with open(urlpath, "r") as fl:
+        with open(urlpath) as fl:
             # Pop off and discard the first "yaml" bit.
             _ = fl.readline()
             return json.load(fl)

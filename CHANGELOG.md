@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Check code quality with `ruff` instead of `flake8`.
+- Rename `requirements-dev.txt` to `requirements.txt`.
+- CI will now test with latest stable Python 3 release.
 
 ## [1.0.0] - 2023-06-28
 ### Added
