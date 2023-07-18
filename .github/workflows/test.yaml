@@ -32,9 +32,9 @@ jobs:
       - name: Format check with black
         run: |
           black --check .
-      - name: Format check with flake8
+      - name: Format check with ruff
         run: |
-          flake8
+          ruff check .
       - name: Type check with mypy
         run: |
           mypy src/dearprudence
