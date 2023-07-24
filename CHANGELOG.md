@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Check code quality with `ruff` instead of `flake8`.
 - Rename `requirements-dev.txt` to `requirements.txt`.
 - CI will now test with latest stable Python 3 release.
+### Fixed
+- Fix bad release links in CHANGELOG.
 
 ## [1.0.0] - 2023-06-28
 ### Added
@@ -25,3 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Type annotations and mypy testing in CI.
 ### Removed
 - `DtrRun` has been removed. Support for DTR files has been dropped.
+
+[unreleased]: https://github.com/brews/dearprudence/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/brews/dearprudence/compare/v0.2.0...v1.0.0
+[0.2.0]: https://github.com/brews/dearprudence/releases/tag/v0.2.0
