@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
 ## [1.1.0] - 2023-07-25
 ### Changed
 - Check code quality with `ruff` instead of `flake8`.
@@ -30,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - `DtrRun` has been removed. Support for DTR files has been dropped.
 
+[unreleased]: https://github.com/brews/dearprudence/compare/v1.1.0...HEAD
 [1.1.0]: https://github.com/brews/dearprudence/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/brews/dearprudence/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/brews/dearprudence/releases/tag/v0.2.0
