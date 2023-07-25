@@ -29,15 +29,12 @@ classifiers = [
 catalog = [
     "intake_esm",
 ]
-dev = [
+test = [
     "black",
-    "build",
-    "ruff",
-    "intake_esm",
     "mypy",
     "pytest",
     "pytest-cov",
-    "twine",
+    "ruff",
 ]
 
 [tool.hatch.version]

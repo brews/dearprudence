@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Check code quality with `ruff` instead of `flake8`.
 - Rename `requirements-dev.txt` to `requirements.txt`.
 - CI will now test with latest stable Python 3 release.
+- Renamed `dev` optional dependencies to `test`.
+- Unused packages in CI from `requirements.txt` - this does not influence the packages requirements.
 ### Fixed
 - Fix bad release links in CHANGELOG.
 
