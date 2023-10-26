@@ -25,6 +25,7 @@ jobs:
           cache-dependency-path: 'requirements.txt'
       - name: Install dependencies
         run: |
+          pip install --upgrade pip
           pip install -r requirements.txt
       - name: Install package
         run: |
