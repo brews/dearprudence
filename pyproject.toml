@@ -30,11 +30,10 @@ catalog = [
     "intake_esm",
 ]
 test = [
-    "black",
     "mypy",
     "pytest",
     "pytest-cov",
-    "ruff",
+    "ruff>=0.1.7",
 ]
 
 [tool.hatch.version]
@@ -57,10 +56,8 @@ exclude = [
     ".eggs",
 ]
 # E402: module level import not at top of file
-# E501: line too long - let black worry about that
 ignore = [
     "E402",
-    "E501",
 ]
 select = [
     # Pyflakes
