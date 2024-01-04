@@ -30,12 +30,12 @@ jobs:
       - name: Install package
         run: |
           pip install .
-      - name: Format check with black
-        run: |
-          black --check .
       - name: Format check with ruff
         run: |
-          ruff check .
+          ruff format --diff
+      - name: Lint check with ruff
+        run: |
+          ruff check
       - name: Type check with mypy
         run: |
           mypy src/dearprudence
