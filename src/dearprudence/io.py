@@ -31,7 +31,7 @@ class SimpleRunMapping(TypedDict):
 
 
 def _load_paramfile(
-    urlpath: Union[str, Union[TextIO, BinaryIO]]
+    urlpath: Union[str, Union[TextIO, BinaryIO]],
 ) -> Sequence[SimpleRunMapping]:
     # First readline() to pop-off and discard the first yaml bit of
     # the file, then load as JSON str. Keeps us from depending
