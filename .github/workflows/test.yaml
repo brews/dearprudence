@@ -32,7 +32,7 @@ jobs:
           pip install .
       - name: Format check with ruff
         run: |
-          ruff format --check
+          ruff format --diff
       - name: Lint check with ruff
         run: |
           ruff check
