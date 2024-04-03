@@ -55,6 +55,8 @@ ignore_missing_imports = true
 exclude = [
     ".eggs",
 ]
+
+[tool.ruff.lint]
 # E402: module level import not at top of file
 ignore = [
     "E402",
