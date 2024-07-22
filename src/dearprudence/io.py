@@ -65,7 +65,8 @@ class _DataclassJSONEncoder(json.JSONEncoder):
     """Encoder to dump dataclasses to JSON"""
 
     def default(self, o: Any) -> Any:
-        if dataclasses.is_dataclass(o):
+        if dataclasses.is_dataclass(o) and not isinstance(o, type):
+            # if clause ensures o is DataclassInstance and not Type[DataclassInstance]
             return dataclasses.asdict(o)
         return super().default(o)
 
