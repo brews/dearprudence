@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Check code format with `ruff` instead of `black`.
+- Check for dataclass instances before encoding as JSON, guarding against edge case.
 
 ## [1.1.0] - 2023-07-25
 ### Changed
