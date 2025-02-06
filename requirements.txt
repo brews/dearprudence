@@ -1,4 +1,4 @@
-intake_esm==2024.2.6
+intake_esm==2025.2.3
 mypy==1.15.0
 pytest==8.3.4
 pytest-cov==6.0.0
