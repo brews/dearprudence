@@ -2,4 +2,4 @@ intake_esm==2025.2.3
 mypy==1.15.0
 pytest==8.3.5
 pytest-cov==6.1.1
-ruff==0.11.4
+ruff==0.11.5
