@@ -14,11 +14,11 @@ tasmax_spec = dearprudence.read_params("GFDL-ESM4-tasmax.yaml")
 
 print(tasmax_spec[0].ssp)
 # Cmip6Record(activity_id='ScenarioMIP',
-#             experiment_id='ssp370', 
-#             table_id='day', 
-#             variable_id='tasmax', 
-#             source_id='GFDL-ESM4', 
-#             institution_id='NOAA-GFDL', 
+#             experiment_id='ssp370',
+#             table_id='day',
+#             variable_id='tasmax',
+#             source_id='GFDL-ESM4',
+#             institution_id='NOAA-GFDL',
 #             member_id='r1i1p1f1',
 #             grid_label='gr1',
 #             version='20180701')
